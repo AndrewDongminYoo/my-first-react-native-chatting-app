@@ -1,9 +1,9 @@
 import React from 'react';
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components/native'
-import { Button } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { Image, Input } from '../components';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { Image, Input, Button } from '../components';
 import { images } from '../utils/images';
 import { validateEmail, removeWhitespace } from '../utils/common';
 
@@ -12,7 +12,9 @@ const Container = styled.View`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.background};
-  padding: 20px;
+  padding: 0 20px;
+  padding-top: ${({ insets: { top} }) => top}px;
+  padding-bottom: ${({ insets: { bottom} }) => bottom}px;
 `;
 
 const ErrorText = styled.Text`
@@ -22,14 +24,23 @@ const ErrorText = styled.Text`
   margin-bottom: 10px;
   line-height: 20px;
   color: ${({ theme }) => theme.errorText};
-`
+`;
 
 const Login = ({ navigation }) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const passwordRef = useRef();
   const [errorMessage, setErrorMessage] = useState('');
+  const [disabled, setDisabled] = useState(true);
+
+  const passwordRef = useRef();
+  const insets = useSafeAreaInsets();
+
+  useEffect(() => {
+   setDisabled(!(email && password && !errorMessage));
+  }, [email, password, errorMessage])
+
+
   const _handleEmagilChange = email => {
     const changedEmail = removeWhitespace(email);
     setEmail(changedEmail);
@@ -40,15 +51,16 @@ const Login = ({ navigation }) => {
   const _handlePasswordChange = password => {
     const changedPassword = removeWhitespace(password);
     setPassword(changedPassword);
-  }
+  };
 
+  const _handleLoginButtonPress = () => {};
 
   return (
     <KeyboardAwareScrollView
       contentContainerStyle={{ flex: 1 }}
       extraScrollHeight={20}
     >
-      <Container>
+      <Container insets={insets}>
         <Image url={images.logo} imageStyle={{ borderRadius: 8 }}/>
         <Input
           label="Email"
@@ -64,12 +76,22 @@ const Login = ({ navigation }) => {
           plcaeholder="Password"
           value={password}
           onChangeText={_handlePasswordChange}
-          onSubmitEditing={() => {}}
+          onSubmitEditing={_handleLoginButtonPress}
           returnKeyType="done"
           isPassword={true}
         />
         <ErrorText>{errorMessage}</ErrorText>
-        <Button title="signup" onPress={() => navigation.navigate('Signup')} />
+        <Button
+          title="Login"
+          onPress={_handleLoginButtonPress}
+          isFilled={true}
+          disabled={disabled}
+        />
+        <Button
+          title="Sign Up with email"
+          onPress={() => navigation.navigate('Signup')}
+          isFilled={false}
+        />
       </Container>
     </KeyboardAwareScrollView>
   )
