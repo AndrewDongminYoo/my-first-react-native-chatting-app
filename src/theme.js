@@ -182,4 +182,5 @@ export const theme = {
   imageBackGround: colors.LightGray,
   inputPlaceholde: colors.DimGray,
   inputBorder: colors.LightGray,
+  errorText: colors.Red,
 }

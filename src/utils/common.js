@@ -4,6 +4,6 @@ export const validateEmail = email => {
 };
 
 export const removeWhitespace = text => {
-  const regex = /^\s+|\s+$|\s+(?=\s)/g,;
+  const regex = /^\s+|\s+$|\s+(?=\s)/g;
   return text.replace(regex, "").trim();
 };
