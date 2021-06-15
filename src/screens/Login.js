@@ -6,6 +6,9 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Image, Input, Button } from '../components';
 import { images } from '../utils/images';
 import { validateEmail, removeWhitespace } from '../utils/common';
+import { Alert } from 'react-native';
+import { login } from '../utils/firebase';
+
 
 const Container = styled.View`
   flex: 1;
@@ -53,7 +56,14 @@ const Login = ({ navigation }) => {
     setPassword(changedPassword);
   };
 
-  const _handleLoginButtonPress = () => {};
+  const _handleLoginButtonPress = async () => {
+    try {
+      const user = await login({ email, password });
+      Alert.alert('Login Success', user.email);
+    } catch (err) {
+      Alert.alert('Login Failed', err.message);
+    }
+  };
 
   return (
     <KeyboardAwareScrollView
