@@ -178,4 +178,8 @@ Black: "#000000"};
 export const theme = {
   background: colors.White,
   text: colors.Black,
+  label: colors.Gray,
+  imageBackGround: colors.LightGray,
+  inputPlaceholde: colors.DimGray,
+  inputBorder: colors.LightGray,
 }
