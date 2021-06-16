@@ -46,4 +46,18 @@ export const signup = async ({ name, email, password, photoUrl }) => {
     photoURL: storageUrl,
   });
   return user;
-}
+};
+
+export const getCurrentUser = () => {
+  const { uid, displayName, email, photoURL } = Auth.currentUser;
+  return { uid, name: displayName, email, photoUrl: photoURL};
+};
+
+export const updateUserPhoto = async photoUrl => {
+  const user = Auth.currentUser;
+  const storageUrl = photoUrl.startsWith('https')
+    ? photoUrl
+    : await uploadImage(photoUrl);
+  await user.updateProfile({ photoURL: storageUrl });
+  return { name: user.displayName, email: user.email, photoUrl:user.photoURL};
+};

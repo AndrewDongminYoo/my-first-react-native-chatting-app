@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components/native';
 import { theme } from './theme';
 import Navigation from './navigations';
 import { images } from './utils/images';
-import { ProgressProvider, UserProvider } from './context';
+import { ProgressProvider, UserProvider } from './contexts';
 
 const cacheImages = images => {
   return images.map(image => {

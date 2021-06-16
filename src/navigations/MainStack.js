@@ -19,7 +19,7 @@ const MainStack = () => {
         headerTintColor: theme.headerTintColor,
       }}
     >
-      <StackScreen
+      <Stack.Screen
         name="Main"
         component={MainTab}
       />

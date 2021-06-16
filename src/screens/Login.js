@@ -8,7 +8,7 @@ import { images } from '../utils/images';
 import { validateEmail, removeWhitespace } from '../utils/common';
 import { Alert } from 'react-native';
 import { login } from '../utils/firebase';
-import { ProgressContext, UserContext } from '../context';
+import { ProgressContext, UserContext } from '../contexts';
 
 
 const Container = styled.View`

@@ -7,7 +7,7 @@ const Container = styled.View`
   background-color: ${({ theme }) => theme.background};
 `;
 
-const ChannelList = () => {
+const ChannelList = ({ navigation }) => {
   return (
     <Container>
       <Text style={{ fontSize: 24 }}>Channel List</Text>

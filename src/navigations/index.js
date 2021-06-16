@@ -3,11 +3,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from './AuthStack';
 import MainStack from './MainStack';
 import { Spinner } from '../components';
-import { ProgressContext, UserContext } from '../context';
+import { ProgressContext, UserContext } from '../contexts';
 
 const Navigation = () => {
 
   const { inProgress } = useContext(ProgressContext)
+  const { user } = useContext(UserContext)
 
   return (
     <NavigationContainer>
