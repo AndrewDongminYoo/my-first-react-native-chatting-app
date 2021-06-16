@@ -189,4 +189,6 @@ export const theme = {
   buttonTitle: colors.White,
   buttonUnfilledTitle: colors.DarkSlateGray,
   headerTintColor: colors.Black,
+  spinnerBackground: colors.Black,
+  spinnerIndicator: colors.White,
 }

@@ -70,7 +70,7 @@ const Signup = () => {
 
    const _handleSignupButtonPress = async () => {
     try {
-      const user = await signup({ email, password });
+      const user = await signup({ name, email, password, photoUrl });
       console.log(user);
       Alert.alert('Login Success', user.email);
     } catch (err) {
