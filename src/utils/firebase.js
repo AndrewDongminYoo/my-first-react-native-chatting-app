@@ -30,7 +30,11 @@ const uploadImage = async uri => {
 export const login = async ({ email, password }) => {
   const { user } = await Auth.signInWithEmailAndPassword(email, password)
   return user;
-}
+};
+
+export const logout = async () => {
+  return await Auth.signOut();
+};
 
 export const signup = async ({ name, email, password, photoUrl }) => {
   const { user } = await Auth.createUserWithEmailAndPassword(email, password);

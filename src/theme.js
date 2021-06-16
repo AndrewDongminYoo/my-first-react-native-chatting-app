@@ -191,4 +191,6 @@ export const theme = {
   headerTintColor: colors.Black,
   spinnerBackground: colors.Black,
   spinnerIndicator: colors.White,
+  tabActiveColor: colors.Blue,
+  tabInactiveColor: colors.DimGray,
 }
