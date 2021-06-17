@@ -179,20 +179,30 @@ export const theme = {
   background: colors.White,
   text: colors.Black,
   label: colors.Gray,
+  errorText: colors.Red,
+  headerTintColor: colors.Black,
+
   imageBackground: colors.LightGray,
   imageButtonBackground: colors.DarkGray,
   imageButtonIcon: colors.White,
+
   inputPlaceholde: colors.DimGray,
   inputBorder: colors.LightGray,
-  errorText: colors.Red,
+  inputDisabledBackground: colors.DarkGray,
+
   buttonBackground: colors.DarkSlateGray,
   buttonTitle: colors.White,
   buttonUnfilledTitle: colors.DarkSlateGray,
-  headerTintColor: colors.Black,
+  buttonLogout: colors.FireBrick,
+
   spinnerBackground: colors.Black,
   spinnerIndicator: colors.White,
+
   tabActiveColor: colors.Blue,
   tabInactiveColor: colors.DimGray,
-  buttonLogout: colors.FireBrick,
-  inputDisabledBackground: colors.DarkGray,
+
+  listBorder: colors.DarkGray,
+  listTime: colors.LightGray,
+  listDescription: colors.DimGray,
+  listIcon: colors.Black,
 }

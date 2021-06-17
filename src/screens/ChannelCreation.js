@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Input, Button } from '../components';
 import { ProgressContext } from '../contexts';
-import { createChannel, creattionChannel } from '../utils/firebase';
+import { createChannel } from '../utils/firebase';
 
 const Container = styled.View`
   flex: 1;
@@ -34,11 +34,11 @@ const ChannelCreation = ({ navigation }) => {
 
   useEffect(() => {
     setDisabled(!(title && !errorMessage));
-   }, [title, description, errorMessage]);
+  }, [title, description, errorMessage]);
 
   const _handleTitleChange = title => {
-     setTitle(title);
-     setErrorMessage(title.trim() ? '' : 'Please enter the title.')
+    setTitle(title);
+    setErrorMessage(title.trim() ? '' : 'Please enter the title.')
   };
 
   const _handleCreateButtonPress = async () => {
