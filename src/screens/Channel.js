@@ -27,6 +27,7 @@ const SendButton = props => {
         justifyContent: 'center',
         marginHorizontal: 4,
       }}
+
     >
       <FontAwesome
         name="send"
@@ -65,28 +66,36 @@ const Channel = ({ navigation, route: { params } }) => {
     navigation.setOptions({ headerTitle: params.title || 'Channel' });
   }, []);
 
-  const _handleMessageSend = () => {};
+  const _handleMessageSend = async messageList => {
+    const newMessage = messageList[0];
+    try {
+      await createMessage({ channelId: params.id, message: newMessage });
+    } catch (err) {
+      Alert.alert('Send Message Error: ', err.message)
+    }
+  };
 
   return (
     <Container>
-      <FlatList
-        keyExtractor={item => item['id']}
-        data={messages}
-        windowSize={3}
-        inverted
-        renderItem={({ item }) => (
-          <Text style={{ fontSize: 24 }}>{ item.text }</Text>
-        )}
-      />
-      <Input
-        value={text}
-        onChangeText={text => setText(text)}
-        onSubmitEditing={() =>
-          createMessage({
-            channelId: params.id,
-            text,
-          })
-        }
+      <GiftedChat
+        listViewProps={{
+          style: { backgroundColor: theme.background },
+        }}
+        placeholder="Enter a message"
+        messages={messages}
+        user={{ _id: uid, name, avatar: photoUrl }}
+        onSend={_handleMessageSend}
+        alwaysShowSend
+        textInputProps={{
+          autoCapitalize: 'none',
+          autoCorrect: false,
+          textContentType: 'none',
+          underlineColorAndroid: 'transparent',
+        }}
+        multiline={true}
+        renderUsernameOnMessage={true}
+        scrollToBottom={true}
+        renderSend={props => <SendButton {...props} />}
       />
     </Container>
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import styled from 'styled-components/native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Image, Input, Button } from '../components';
@@ -7,6 +7,7 @@ import { validateEmail, removeWhitespace } from '../utils/common';
 import { images } from '../utils/images';
 import { Alert } from 'react-native';
 import { signup } from '../utils/firebase';
+import { ProgressContext } from '../contexts';
 
 const Container = styled.View`
   justify-content: center;
@@ -40,6 +41,8 @@ const Signup = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
 
+  const { spinner } = useContext(ProgressContext);
+
   useEffect(() => {
     if (didMountRef.current) {
       let _errorMessage = '';
@@ -70,11 +73,14 @@ const Signup = () => {
 
    const _handleSignupButtonPress = async () => {
     try {
+      spinner.start()
       const user = await signup({ name, email, password, photoUrl });
       console.log(user);
       Alert.alert('Login Success', user.email);
     } catch (err) {
       Alert.alert('Login Failed', err.message);
+    } finally {
+      spinner.stop()
     }
   };
 

@@ -5,6 +5,7 @@ import { ThemeContext } from 'styled-components/native';
 import { FlatList } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { DB } from '../utils/firebase';
+import moment from 'moment';
 
 const Container = styled.View`
   flex: 1;
@@ -40,6 +41,12 @@ const ItemTime = styled.Text`
   color: ${({ theme }) => theme.listTime};
 `;
 
+const getDateorTime = timestamp => {
+  const now = moment().startOf('day');
+  const target = moment(timestamp).startOf('day');
+  return moment(timestamp).format(now.diff(target, 'days') > 0 ? 'MM/DD' : 'HH:mm');
+}
+
 const Item = React.memo(
   ({ item: { id, title, description, createdAt }, onPress}) => {
     const theme = useContext(ThemeContext);
@@ -51,7 +58,7 @@ const Item = React.memo(
         <ItemTitle>{ title }</ItemTitle>
         <ItemDescription>{ description }</ItemDescription>
       </ItemTextContainer>
-      <ItemTime>{ createdAt }</ItemTime>
+      <ItemTime>{ getDateorTime(createdAt) }</ItemTime>
       <AntDesign name="right" size={24} color={theme.listIcon} />
     </ItemContainer>
     );

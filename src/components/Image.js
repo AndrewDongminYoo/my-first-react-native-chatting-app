@@ -46,7 +46,7 @@ const PhotoButton = ({ onPress }) => {
   )
 }
 
-const Image = ({ url, imageStyle, rounded, showButton }) => {
+const Image = ({ url, imageStyle, rounded, showButton, onChangeImage }) => {
 
   useEffect(() => {
     (async () => {

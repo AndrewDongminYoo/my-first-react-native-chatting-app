@@ -205,4 +205,7 @@ export const theme = {
   listTime: colors.LightGray,
   listDescription: colors.DimGray,
   listIcon: colors.Black,
+
+  sendButtonActivate: colors.MediumBlue,
+  sendButtonInactivate: colors.DarkGray,
 }
