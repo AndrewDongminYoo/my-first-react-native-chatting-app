@@ -6,6 +6,7 @@ import { Login, Signup } from '../screens';
 const Stack = createStackNavigator();
 
 const AuthStack = () => {
+
   const theme = useContext(ThemeContext);
 
   return (
@@ -13,7 +14,7 @@ const AuthStack = () => {
       initialRouteName="Login"
       screenOptions={{
         headerTitleAlign: 'center',
-        cardStyle: { backgroundColor: theme.backgroundColor },
+        cardStyle: { backgroundColor: theme.background },
         headerTintColor: theme.headerTintColor,
       }}
     >

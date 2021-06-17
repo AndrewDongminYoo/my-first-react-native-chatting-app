@@ -8,6 +8,7 @@ import { theme } from './theme';
 import Navigation from './navigations';
 import { images } from './utils/images';
 import { ProgressProvider, UserProvider } from './contexts';
+import { LogBox } from 'react-native';
 
 const cacheImages = images => {
   return images.map(image => {
@@ -23,6 +24,8 @@ const cacheFonts = fonts => {
 };
 
 const App = () => {
+
+  LogBox.ignoreAllLogs();
 
   const [isReady, setIsReady] = useState(false);
 

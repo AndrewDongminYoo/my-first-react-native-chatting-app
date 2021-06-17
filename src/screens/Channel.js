@@ -5,7 +5,6 @@ import { ThemeContext } from 'styled-components/native';
 import { Alert } from 'react-native';
 import { GiftedChat, Send } from 'react-native-gifted-chat';
 import { DB, createMessage, getCurrentUser } from '../utils/firebase';
-import { Input } from '../components';
 import { FontAwesome } from '@expo/vector-icons';
 
 const Container = styled.View`
@@ -45,7 +44,6 @@ const Channel = ({ navigation, route: { params } }) => {
   const theme = useContext(ThemeContext);
   const { uid, name, photoUrl } = getCurrentUser();
   const [messages, setMessages] = useState([]);
-  const [text, setText] = useState([]);
 
   useEffect(()=>{
     const unsubscribe = DB.collection('channels')
