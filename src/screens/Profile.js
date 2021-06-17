@@ -54,8 +54,8 @@ const Profile = () => {
         showButton
         rounded
       />
-      <Input label="Name" value={user.name} />
-      <Input label="Email" value={user.email} />
+      <Input label="Name" value={user.name} disabled />
+      <Input label="Email" value={user.email} disabled />
       <Button
         title="logout"
         onPress={_handleLogoutButtonPress}

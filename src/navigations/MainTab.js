@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Profile, ChannelList } from '../screens';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -17,10 +17,26 @@ const TabBarIcon = ({ focused, name }) => {
   );
 };
 
-
-const MainTab = () => {
+const MainTab = ({ navigation, route }) => {
 
   const theme = useContext(ThemeContext);
+
+  useEffect(() => {
+    const titles = route.state?.routeNames || ['Channels'];
+    const index = route.state?.index || 0;
+    navigation.setOptions({
+      headerTitle: titles[index],
+      headerRight: () =>
+        index === 0 && (
+          <MaterialCommunityIcons
+            name="account-group"
+            size={26}
+            style={{ margin: 10 }}
+            onPress={() => navigation.navigate('Channel Creation')}
+          />
+        ),
+    });
+  }, [route])
 
   return (
     <Tab.Navigator
@@ -30,7 +46,7 @@ const MainTab = () => {
       }}
     >
       <Tab.Screen
-        name="Channel List"
+        name="Channels"
         component={ChannelList}
         options={{
           tabBarIcon: ({ focused }) =>

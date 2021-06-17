@@ -1,8 +1,8 @@
 import firebase from 'firebase';
 import config from '../../firebase.json';
+import 'firebase/firestore';
 
 const app = firebase.initializeApp(config);
-
 const Auth = app.auth();
 
 const uploadImage = async uri => {
@@ -26,6 +26,21 @@ const uploadImage = async uri => {
   blob.close();
   return await snapshot.ref.getDownloadURL();
 };
+
+export const DB = firebase.firestore();
+
+export const createChannel = async ({ title, description }) => {
+  const newChennelRef = DB.collection('channels').doc();
+  const id = newChennelRef.id;
+  const newChannel = {
+    id,
+    title,
+    description,
+    createAt: Date.now(),
+  };
+  await newChennelRef.set(newChannel);
+  return id;
+}
 
 export const login = async ({ email, password }) => {
   const { user } = await Auth.signInWithEmailAndPassword(email, password)

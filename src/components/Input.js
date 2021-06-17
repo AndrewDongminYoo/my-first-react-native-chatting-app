@@ -19,7 +19,8 @@ const Label = styled.Text`
 const StyledTextInput = styled.TextInput.attrs(({ theme }) => ({
   placeholerTextColor: theme.inputPlaceholder,
 }))`
-    background-color: ${({ theme }) => theme.background};
+    background-color: ${({ theme, editable }) =>
+      editable ? theme.background : theme.inputDisableBackground};
     color: ${({ theme }) => theme.text};
     padding: 20px 10px;
     font-dize: 16px;
@@ -40,6 +41,7 @@ const Input = forwardRef(
       isPassword,
       returnKeyType,
       maxLength,
+      disabled,
     },
     ref) => {
     const [isFocused, setIsFocused] = useState(false);
@@ -66,6 +68,7 @@ const Input = forwardRef(
           autoCorrect={false}
           textContentType="none"
           underlineColorAndroid="transparent"
+          editable={!disabled}
         />
       </Container>
     );
@@ -74,6 +77,8 @@ const Input = forwardRef(
 
 Input.defaultProps = {
   onBlur: () => {},
+  onChangeText: () => {},
+  onSubmitEditing: () => {},
 };
 
 Input.propTypes = {
@@ -82,8 +87,11 @@ Input.propTypes = {
   onChangeText: propTypes.func.isRequired,
   onSubmitEditing: propTypes.func.isRequired,
   onBlur: propTypes.func,
+  onChangeText: propTypes.func,
+  onSubmitEditing: propTypes.func,
   plcaeholder: propTypes.string,
   isPassword: propTypes.bool,
+  disabled: propTypes.bool,
   returnKeyType: propTypes.oneOf(['done', 'next']),
   maxLength: propTypes.number,
 };

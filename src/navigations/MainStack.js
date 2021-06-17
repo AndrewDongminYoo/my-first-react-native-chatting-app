@@ -24,7 +24,7 @@ const MainStack = () => {
         component={MainTab}
       />
       <Stack.Screen
-        name="ChannelCreation"
+        name="Channel Creation"
         component={ChannelCreation}
       />
       <Stack.Screen

@@ -194,4 +194,5 @@ export const theme = {
   tabActiveColor: colors.Blue,
   tabInactiveColor: colors.DimGray,
   buttonLogout: colors.FireBrick,
+  inputDisabledBackground: colors.DarkGray,
 }
