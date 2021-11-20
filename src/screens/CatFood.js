@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useState, useContext, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { ThemeContext } from 'styled-components/native';
 import acana from "../../assets/images/acana.png";
 import QuickInfo from '../components/QuickInfo';
@@ -87,17 +87,17 @@ const sampleData = {
     Carbo: 31.9,
   },
   ingredients: ['Salmon', 'salmon meal', 'catfish meal', 'oatmeal', 'whole peas', 'catfish oil', 'whole green lentils', 'whole herring', 'whole chickpeas', 'catfish',
-  'natural salmon flavor', 'lentil fiber', 'sunflower oil', 'rainbow trout', 'salmon oil', 'whole cranberries', 'dried kelp', 'choline chloride', 'zinc proteinate',
-  'mixed tocopherols (preservative)', 'vitamin E supplement', 'taurine', 'vitamin D3 supplement', 'vitamin A acetate', 'L-carnitine', 'DL-methionine', 'copper proteinate',
-  'niacin', 'thiamine mononitrate', 'riboflavin', 'calcium pantothenate', 'pyridoxine hydrochloride', 'folic acid', 'vitamin B12 supplement', 'biotin', 'ascorbic acid (vitamin C)',
-  'citric acid (preservative)', 'rosemary extract', 'dried Lactobacillus acidophilus fermentation product', 'dried Bifidobacterium animalis fermentation product',
-  'dried Lactobacillus casei fermentation product'],
+    'natural salmon flavor', 'lentil fiber', 'sunflower oil', 'rainbow trout', 'salmon oil', 'whole cranberries', 'dried kelp', 'choline chloride', 'zinc proteinate',
+    'mixed tocopherols (preservative)', 'vitamin E supplement', 'taurine', 'vitamin D3 supplement', 'vitamin A acetate', 'L-carnitine', 'DL-methionine', 'copper proteinate',
+    'niacin', 'thiamine mononitrate', 'riboflavin', 'calcium pantothenate', 'pyridoxine hydrochloride', 'folic acid', 'vitamin B12 supplement', 'biotin', 'ascorbic acid (vitamin C)',
+    'citric acid (preservative)', 'rosemary extract', 'dried Lactobacillus acidophilus fermentation product', 'dried Bifidobacterium animalis fermentation product',
+    'dried Lactobacillus casei fermentation product'],
   nutrient: {
     'Crude protein (min.)': 33,
     'Crude fat (min.)': 16,
     'Crude fiber (max.)': 4,
     'Moisture (max.)': 10,
-    'EPA (eicosapentaenoic acid) (min.)':0.2,
+    'EPA (eicosapentaenoic acid) (min.)': 0.2,
     'DHA (docosahexaenoic acid) (min.)': 0.28,
     'Calcium (min.)': 2,
     'Phosphorus (min.)': 1.4,
@@ -114,8 +114,8 @@ const CatFood = () => {
 
   return (
     <Container>
-      <StatusBar barStyle="dark-content"/>
-      <FormulaImage source={acana} resizeMode="contain"/>
+      <StatusBar barStyle="dark-content" />
+      <FormulaImage source={acana} resizeMode="contain" />
       <Brand>{sampleData.brand}</Brand>
       <Name>{sampleData.name}</Name>
       <Age><AgeText>all life</AgeText></Age>

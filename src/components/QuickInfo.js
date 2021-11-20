@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useState, useContext, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/native';
 import { ThemeContext } from 'styled-components/native';
 
 const Container = styled.View`
@@ -23,7 +23,7 @@ const Value = styled.View`
   flex: 2;
 `;
 
-export default QuickInfo = content => {
+const QuickInfo = (content) => {
   return (
     <Container>
       <Index>
@@ -32,4 +32,6 @@ export default QuickInfo = content => {
       </Value>
     </Container>
   )
-}
+};
+
+export default QuickInfo;
